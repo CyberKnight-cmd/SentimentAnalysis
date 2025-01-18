@@ -1,10 +1,12 @@
-# print("Loading..")
+print("Loading..")
 
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 import speech_recognition as sr
 
+
 print("Initializing...")
+
 # Load tokenizer and model
 model_name = "cardiffnlp/twitter-roberta-base-sentiment"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -24,7 +26,7 @@ while True:
             # Recognize speech using Google Speech Recognition
             text = recognizer.recognize_google(audio)
             print(f"Recognized: {text}")
-            inputs = tokenizer(text, return_tensors="pt")
+            inputs = tokenizer(text, return_tensors="pt") 
             outputs = model(**inputs)
 
             # Compute probabilities
